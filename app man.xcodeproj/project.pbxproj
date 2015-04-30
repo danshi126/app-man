@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		183B11981AF2090700EF47D4 /* app.plist in Resources */ = {isa = PBXBuildFile; fileRef = 183B11971AF2090700EF47D4 /* app.plist */; };
 		188CF3CE1AEFC02A003757B7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 188CF3CD1AEFC02A003757B7 /* main.m */; };
 		188CF3D11AEFC02A003757B7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 188CF3D01AEFC02A003757B7 /* AppDelegate.m */; };
 		188CF3D41AEFC02A003757B7 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 188CF3D31AEFC02A003757B7 /* ViewController.m */; };
@@ -27,6 +28,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		183B11971AF2090700EF47D4 /* app.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = app.plist; sourceTree = "<group>"; };
 		188CF3C81AEFC02A003757B7 /* app man.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "app man.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		188CF3CC1AEFC02A003757B7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		188CF3CD1AEFC02A003757B7 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -96,6 +98,7 @@
 		188CF3CB1AEFC02A003757B7 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				183B11971AF2090700EF47D4 /* app.plist */,
 				188CF3CC1AEFC02A003757B7 /* Info.plist */,
 				188CF3CD1AEFC02A003757B7 /* main.m */,
 			);
@@ -199,6 +202,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				183B11981AF2090700EF47D4 /* app.plist in Resources */,
 				188CF3D71AEFC02A003757B7 /* Main.storyboard in Resources */,
 				188CF3DC1AEFC02A003757B7 /* LaunchScreen.xib in Resources */,
 				188CF3D91AEFC02A003757B7 /* Images.xcassets in Resources */,
@@ -416,6 +420,7 @@
 				188CF3ED1AEFC02B003757B7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		188CF3EE1AEFC02B003757B7 /* Build configuration list for PBXNativeTarget "app manTests" */ = {
 			isa = XCConfigurationList;
@@ -424,6 +429,7 @@
 				188CF3F01AEFC02B003757B7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
