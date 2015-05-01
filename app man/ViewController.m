@@ -10,6 +10,8 @@
 
 @interface ViewController ()
 
+@property (nonatomic, strong) NSArray *PicList;
+
 @end
 
 
@@ -17,6 +19,18 @@
 #define VIEWW   90
 
 @implementation ViewController
+
+
+- (NSArray *)PicList
+{
+    if(_PicList == nil)
+    {
+        _PicList = [NSArray arrayWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"app.plist" ofType:nil]];
+    }
+    return _PicList;
+}
+
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -28,14 +42,14 @@
     // 搭建界面，九宫格
 #define kAppViewW 80
 #define kAppViewH 90
-#define kColCount 4
+#define kColCount 3
 #define kStartY   20
     
     // 320 - 3 * 80 = 80 / 4 = 20
     CGFloat marginX = (self.view.bounds.size.width - kColCount * kAppViewW) / (kColCount + 1);
     CGFloat marginY = 10;
     
-    for (int i = 0; i < 24; i++)
+    for (int i = 0; i < 12; i++)
     {
         int row = i / kColCount;
         int col = i % kColCount;
@@ -47,30 +61,34 @@
         appView.backgroundColor = [UIColor redColor];
         [self.view addSubview:appView];
         
-        
+        NSDictionary *dic = self.PicList[i];
         UIImageView *image = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, kAppViewW, 50)];
-        [image setBackgroundColor:[UIColor blueColor]];
+        image.image = [UIImage imageNamed:dic[@"icon"]];
+        
+        [image setContentMode:UIViewContentModeScaleAspectFit];
+        
         [appView addSubview:image];
-        
-        
+      
         
         UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(image.frame), kAppViewW, 20)];
-        [label setBackgroundColor:[UIColor yellowColor]];
+//        [label setBackgroundColor:[UIColor yellowColor]];
+        
+        label.text = dic[@"name"];
+        [label setTextAlignment:NSTextAlignmentCenter];
+        [label setFont:[UIFont systemFontOfSize:12.0]];
         [appView addSubview:label];
         
-
+        
         UIButton *but = [[UIButton alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(label.frame), kAppViewW, 20)];
         [but setBackgroundColor:[UIColor blackColor]];
+        [but setBackgroundImage:[UIImage imageNamed:@"buttongreen"] forState:(UIControlStateNormal)];
+        [but setBackgroundImage:[UIImage imageNamed:@"buttongreen_highlighted"] forState:(UIControlStateNormal)];
+        [but setTitle:@"下载" forState:(UIControlStateNormal)];
+        [but setTitle:@"下载" forState:(UIControlStateHighlighted)];
+        but.titleLabel.font = [UIFont systemFontOfSize:12.0];
         [appView addSubview:but];
-        // 实现视图内部细节
-        //        NSDictionary *dict = self.appList[i];
-  //      HMAppInfo *appInfo = self.appList[i];
         
-        // 1> UIImageView
-      //  UIImageView *icon = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, kAppViewW, 50)];
-
     }
-    
     
 }
 
