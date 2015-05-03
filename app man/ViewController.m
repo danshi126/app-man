@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "WPAppinfo.h"
 
 @interface ViewController ()
 
@@ -25,7 +26,21 @@
 {
     if(_PicList == nil)
     {
-        _PicList = [NSArray arrayWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"app.plist" ofType:nil]];
+//        _PicList = [NSArray arrayWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"app.plist" ofType:nil]];
+        NSArray *array = [NSArray arrayWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"app.plist" ofType:nil]];
+        
+        NSMutableArray *mutable = [NSMutableArray array];
+        
+        for(NSDictionary *dict in array)
+        {
+            WPAppinfo *appinfo = [[WPAppinfo alloc] initWithDict:dict];
+//            appinfo.icon = dict[@"icon"];
+//            appinfo.name = dict[@"name"];
+            [mutable addObject:appinfo];
+        }
+        _PicList = mutable;
+        
+        
     }
     return _PicList;
 }
@@ -61,9 +76,9 @@
         appView.backgroundColor = [UIColor redColor];
         [self.view addSubview:appView];
         
-        NSDictionary *dic = self.PicList[i];
+        WPAppinfo *info = self.PicList[i];
         UIImageView *image = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, kAppViewW, 50)];
-        image.image = [UIImage imageNamed:dic[@"icon"]];
+        image.image = [UIImage imageNamed:info.icon];
         
         [image setContentMode:UIViewContentModeScaleAspectFit];
         
@@ -73,7 +88,7 @@
         UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(image.frame), kAppViewW, 20)];
 //        [label setBackgroundColor:[UIColor yellowColor]];
         
-        label.text = dic[@"name"];
+        label.text = info.icon;
         [label setTextAlignment:NSTextAlignmentCenter];
         [label setFont:[UIFont systemFontOfSize:12.0]];
         [appView addSubview:label];

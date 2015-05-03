@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		183B11981AF2090700EF47D4 /* app.plist in Resources */ = {isa = PBXBuildFile; fileRef = 183B11971AF2090700EF47D4 /* app.plist */; };
+		186FA73C1AF37AC8005B3F68 /* WPAppinfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 186FA73B1AF37AC8005B3F68 /* WPAppinfo.m */; };
 		188CF3CE1AEFC02A003757B7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 188CF3CD1AEFC02A003757B7 /* main.m */; };
 		188CF3D11AEFC02A003757B7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 188CF3D01AEFC02A003757B7 /* AppDelegate.m */; };
 		188CF3D41AEFC02A003757B7 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 188CF3D31AEFC02A003757B7 /* ViewController.m */; };
@@ -29,6 +30,8 @@
 
 /* Begin PBXFileReference section */
 		183B11971AF2090700EF47D4 /* app.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = app.plist; sourceTree = "<group>"; };
+		186FA73A1AF37AC8005B3F68 /* WPAppinfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WPAppinfo.h; sourceTree = "<group>"; };
+		186FA73B1AF37AC8005B3F68 /* WPAppinfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WPAppinfo.m; sourceTree = "<group>"; };
 		188CF3C81AEFC02A003757B7 /* app man.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "app man.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		188CF3CC1AEFC02A003757B7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		188CF3CD1AEFC02A003757B7 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -87,6 +90,8 @@
 				188CF3D01AEFC02A003757B7 /* AppDelegate.m */,
 				188CF3D21AEFC02A003757B7 /* ViewController.h */,
 				188CF3D31AEFC02A003757B7 /* ViewController.m */,
+				186FA73A1AF37AC8005B3F68 /* WPAppinfo.h */,
+				186FA73B1AF37AC8005B3F68 /* WPAppinfo.m */,
 				188CF3D51AEFC02A003757B7 /* Main.storyboard */,
 				188CF3D81AEFC02A003757B7 /* Images.xcassets */,
 				188CF3DA1AEFC02A003757B7 /* LaunchScreen.xib */,
@@ -225,6 +230,7 @@
 			files = (
 				188CF3D41AEFC02A003757B7 /* ViewController.m in Sources */,
 				188CF3D11AEFC02A003757B7 /* AppDelegate.m in Sources */,
+				186FA73C1AF37AC8005B3F68 /* WPAppinfo.m in Sources */,
 				188CF3CE1AEFC02A003757B7 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
