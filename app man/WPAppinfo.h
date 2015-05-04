@@ -7,12 +7,20 @@
 //
 
 #import <Foundation/Foundation.h>
+//#import <UIKit/UIKitDefines.h>
+#import <UIKit/UIImage.h>
+//#import <UIKit/UIStateRestoration.h>
+//#import <UIKit/UITraitCollection.h>
+
 
 @interface WPAppinfo : NSObject
 
 @property (nonatomic,strong) NSString *name;
 @property (nonatomic,strong) NSString *icon;
+//@property (nonatomic,strong) NSString *icon;
+@property (nonatomic,strong) UIImage *image;
 
 
-- (id)initWithDict:(NSDictionary *)dic;
+- (instancetype)initWithDict:(NSDictionary *)dic;
++ (NSArray *)applist;
 @end

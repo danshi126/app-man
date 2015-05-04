@@ -26,21 +26,7 @@
 {
     if(_PicList == nil)
     {
-//        _PicList = [NSArray arrayWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"app.plist" ofType:nil]];
-        NSArray *array = [NSArray arrayWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"app.plist" ofType:nil]];
-        
-        NSMutableArray *mutable = [NSMutableArray array];
-        
-        for(NSDictionary *dict in array)
-        {
-            WPAppinfo *appinfo = [[WPAppinfo alloc] initWithDict:dict];
-//            appinfo.icon = dict[@"icon"];
-//            appinfo.name = dict[@"name"];
-            [mutable addObject:appinfo];
-        }
-        _PicList = mutable;
-        
-        
+        _PicList = [WPAppinfo applist];
     }
     return _PicList;
 }
@@ -78,7 +64,8 @@
         
         WPAppinfo *info = self.PicList[i];
         UIImageView *image = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, kAppViewW, 50)];
-        image.image = [UIImage imageNamed:info.icon];
+//        image.image = [UIImage imageNamed:info.icon];
+        image.image = info.image;
         
         [image setContentMode:UIViewContentModeScaleAspectFit];
         
@@ -88,7 +75,7 @@
         UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(image.frame), kAppViewW, 20)];
 //        [label setBackgroundColor:[UIColor yellowColor]];
         
-        label.text = info.icon;
+        label.text = info.name;
         [label setTextAlignment:NSTextAlignmentCenter];
         [label setFont:[UIFont systemFontOfSize:12.0]];
         [appView addSubview:label];
@@ -101,7 +88,11 @@
         [but setTitle:@"下载" forState:(UIControlStateNormal)];
         [but setTitle:@"下载" forState:(UIControlStateHighlighted)];
         but.titleLabel.font = [UIFont systemFontOfSize:12.0];
+        
+        but.tag = i;
         [appView addSubview:but];
+        
+        [but addTarget:nil action:@selector(click:)forControlEvents:(UIControlEventTouchUpInside)];
         
     }
     
@@ -110,6 +101,34 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+
+- (void)click:(UIButton *)button
+{
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(120, 500, 160, 40)];
+    WPAppinfo *info = self.PicList[button.tag];
+                        //第一个参数，0表示黑，1表示白
+                        //第二个参数，表示透明度
+    [label setBackgroundColor:[UIColor colorWithWhite:0.0 alpha:0.3]];
+    
+    label.text = info.name;
+    label.textAlignment = NSTextAlignmentCenter;
+    //透明度
+    label.alpha = 0.0;
+    
+    [self.view addSubview:label];
+    button.enabled = NO;
+    
+    [UIView animateWithDuration:1.0f animations:^{
+        label.alpha = 1.0;
+    } completion:^(BOOL finished) {
+        [UIView animateWithDuration:1.0f animations:^{
+            label.alpha = 0.0;
+        } completion:^(BOOL finished) {
+           [label removeFromSuperview];
+        }];
+    }];
 }
 
 @end

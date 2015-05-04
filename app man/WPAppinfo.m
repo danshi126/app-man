@@ -10,16 +10,36 @@
 
 @implementation WPAppinfo
 
-- (id) initWithDict:(NSDictionary *)dic
+- (instancetype) initWithDict:(NSDictionary *)dic
 {
     self = [super init];
     if(self)
     {
-//        self.name = dic[@"name"];
-//        self.icon = dic[@"icon"];
         [self setValuesForKeysWithDictionary:dic];
     }
     return self;
+}
+
+
+- (UIImage *)image
+{
+    if(_image == nil)
+        _image = [UIImage imageNamed:self.icon];
+    return _image;
+}
+
++ (NSArray *)applist
+{
+    NSArray *array = [NSArray arrayWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"app.plist" ofType:nil]];
+    
+    NSMutableArray *mutable = [NSMutableArray array];
+    
+    for(NSDictionary *dict in array)
+    {
+        WPAppinfo *appinfo = [[WPAppinfo alloc] initWithDict:dict];
+        [mutable addObject:appinfo];
+    }
+    return mutable;
 }
 
 @end
